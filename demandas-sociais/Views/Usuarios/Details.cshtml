@@ -1,0 +1,30 @@
+@model demandas_sociais.Models.Usuario
+
+@{
+    ViewData["Title"] = "Visualizar Dados";
+}
+
+<h1>Dados de Usuário</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Perfil)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Perfil)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Voltar</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary" style="background-color: purple; border-color: purple; color: white">Editar</a>
+</div>

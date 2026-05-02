@@ -1,0 +1,47 @@
+@model IEnumerable<demandas_sociais.Models.Demandas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Demandas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary" style="background-color: purple; border-color: white; color: white ">Adicionar Demandas</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Demanda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+              <a asp-action="Relatorio" asp-route-id="@item.id">@item.Demanda</a> 
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Tipo)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.id" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Visualizar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-primary" style="background-color: white; border-color: red; color: red">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

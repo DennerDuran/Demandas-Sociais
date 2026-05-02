@@ -1,0 +1,59 @@
+@model demandas_sociais.Models.Recursos
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar Recursos</h1>
+
+<h4>Recursos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Custo" class="control-label"></label>
+                <input id="Custo" name="Custo" required data-val-required="Obrigatorio Informar a quantidade" class="form-control" />
+                <span asp-validation-for="Custo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantidade" class="control-label"></label>
+                <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control" asp-items="Html.GetEnumSelectList<TipoRecurso>()"></select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+       <div class="form-group">
+            <label asp-for="DemandaId" class="control-label"></label>
+             <select asp-for="DemandaId" class="form-control" asp-items="ViewBag.DemandaId"></select>
+             <span asp-validation-for="DemandaId" class="text-danger"></span>
+        </div>
+          
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" style="background-color: purple; border-color: purple; color: white" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
