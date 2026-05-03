@@ -53,7 +53,7 @@ namespace demandas_sociais.Controllers
 
             if (dados == null)
                 return NotFound();  
-            return View();
+            return View(dados);
         }
 
         [HttpPost]
