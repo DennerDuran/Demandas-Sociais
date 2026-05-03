@@ -4,51 +4,77 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Adicionar nova demanda</h1>
+<!-- Inicio-->
 
-<h4>Demandas</h4>
+<h1 class="mb-1">Cadastrar Demanda</h1>
+<small class="text-muted">Data: @DateTime.Now.ToString("dd/MM/yyyy")</small>
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
+
+<!-- Formatação da página-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card p-4 shadow-sm">
+
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Demanda" class="control-label"></label>
-                <input asp-for="Demanda" class="form-control" />
-                <span asp-validation-for="Demanda" class="text-danger"></span>
-            </div>
+            <!-- N da Demanda -->
+                    <div class="form-group mt-4">
+                        <label asp-for="Demanda" class="control-label"></label>
+                        <input asp-for="Demanda" class="form-control" />
+                        <span asp-validation-for="Demanda" class="text-danger"></span>
+                    </div>
 
-            <div class="form-group">
+
+            <!-- Descrição da Demanda -->
+                    <div class="form-group mt-4">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <!-- Tipo de Demanda -->
+                    <div class="form-group mt-4">
                 <label asp-for="Tipo" class="control-label"></label>
                 <input asp-for="Tipo" class="form-control" />
                 <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
+          
+            <!-- Nível de Urgência -->
+                    <div class="bg-urgencia mt-4">
+                <label class="control-label">Nível de Urgência</label>
 
-            <div class="form-group">
-                <label asp-for="Prioridade" class="control-label"></label>
-                <select asp-for="Prioridade" class="form-control">
-                    <option value="">Selecione uma prioridade</option>
-                    <option value="1">Baixa</option>
-                    <option value="2">Média</option>
-                    <option value="3">Alta</option>
-                </select>
-                <span asp-validation-for="Prioridade" class="text-danger"></span>
+                <!-- Prioridade -->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Prioridade" value="1">
+                    <label class="form-check-label">Baixa</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Prioridade" value="2">
+                    <label class="form-check-label">Média</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Prioridade" value="3">
+                    <label class="form-check-label">Alta</label>
+                </div>
             </div>
+            <span asp-validation-for="Prioridade" class="text-danger"></span>
 
-            <div class="form-group">
+            <!-- Campos de Adicionar/Voltar -->
+            <div class="form-group mt-4 text-end">
                 <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Voltar</a>
                 <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: purple; border-color: purple;" />
                
             </div>
 
         </form>
+  
+             </div>
+        </div>
     </div>
 </div>
 
