@@ -31,6 +31,7 @@ namespace demandas_sociais.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Demandas demandas)
         {
             if (ModelState.IsValid)
@@ -57,6 +58,7 @@ namespace demandas_sociais.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Demandas demandas)
         {
             if (id != demandas.id)

@@ -24,7 +24,18 @@ namespace demandas_sociais.Models
         [Display(Name = "Tipo de Demanda")]
         public string Tipo { get; set; }
 
-        public ICollection<Recursos> Recursos { get; set; } 
 
+        [Required]
+        public Prioridade Prioridade { get; set; }
+
+
+        public ICollection<Recursos> Recursos { get; set; }
+
+    }
+    public enum Prioridade
+    {
+        Baixa = 1,
+        Média = 2,
+        Alta = 3
     }
 }

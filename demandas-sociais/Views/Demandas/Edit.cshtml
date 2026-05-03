@@ -28,6 +28,18 @@
                 <input asp-for="Tipo" class="form-control" />
                 <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Prioridade" class="control-label"></label>
+                <select asp-for="Prioridade" class="form-control">
+                    <option value="">Selecione uma prioridade</option>
+                    <option value="1">Baixa</option>
+                    <option value="2">Média</option>
+                    <option value="3">Alta</option>
+                </select>
+                <span asp-validation-for="Prioridade" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple ">Voltar</a>
                 <input type="submit" value="Salvar" class="btn btn-primary" style="background-color: purple; border-color: white; color: white " />
