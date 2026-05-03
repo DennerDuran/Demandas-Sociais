@@ -4,28 +4,29 @@
     ViewData["Title"] = "Create";
 }
 
+<div class="container-fluid mt-4">
 <!-- Inicio-->
 
-<h1 class="mb-1">Cadastrar Demanda</h1>
-<small class="text-muted">Data: @DateTime.Now.ToString("dd/MM/yyyy")</small>
-       
-<div class="row justify-content-center">
+    <div class="mb-4">
+    <h1 class="mb-1">Cadastrar Demanda</h1>
+    <small class="text-muted">Data: @DateTime.Now.ToString("dd/MM/yyyy")</small>
+    </div>
 
     <!-- ETAPAS (LADO ESQUERDO) -->
-    <div class="col-lg-2 d-none d-lg-block">
+    <div class="create-layout">
+
         <div class="etapas">
             <div class="etapa ativa">Identificação</div>
             <div class="etapa">Detalhes e Evidências</div>
             <div class="etapa">Localização</div>
         </div>
-    </div>
 
-
-    <!-- Etapa 01 - Identificação ->
-    <!-- FORMULÁRIO (CARD PRINCIPAL) -->
+    <!-- Etapa 01 - Identificação -->
+  
     <div class="col-lg-8">
         <div class="card p-4 shadow-sm">
 
+       <!-- FORMULÁRIO (CARD PRINCIPAL) -->
         <form asp-action="Create">
                 <div class="step step-1 active"> 
 
@@ -74,14 +75,10 @@
                     </div>
                 </div>
                 <span asp-validation-for="Prioridade" class="text-danger"></span>
-              
-
-         
 
             <!-- Campos de Adicionar/Voltar -->
                     <!-- <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Voltar</a>-->
-                     
-           
+
                     <button type="button"
                             class="btn btn-primary"
                             onclick="nextStep(2)">
@@ -90,7 +87,8 @@
                 </div>
                     <!-- fim do step 01-->
 
-      <!-- Inicio do Step 02 -->
+      <!-- Inicio do Card 02 - Detalhes e Evidências -->
+
                 <div class="step step-2">
 
                 <h5>Detalhes e Evidências</h5>
@@ -117,6 +115,7 @@
                         <span asp-validation-for="Tipo" class="text-danger"></span>
                     </div>
 
+            <!-- Inicio do Card 02 - Detalhes e Evidências -->
                 <div class="d-flex justify-content-between mt-4">
                     <button type="button"
                             class="btn btn-outline-primary"
@@ -132,9 +131,10 @@
                 </div>
 
             </div>
-                <!-- fim do step 02-->
+                <!-- fim do Card 02-->
 
-                <!-- Inicio do Step 03 -->
+
+                <!-- Inicio do Card 03 - Localização -->
                 <div class="step step-3"> 
 
                     <h5>Localização</h5>
@@ -145,28 +145,25 @@
                                 onclick="nextStep(2)">
                             Voltar
                         </button>
-
-                     <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: purple; border-color: purple;" /> 
-
+                        <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: #6f42c1; border-color: #6f42c1;" />
                 </div>
                 </div>
-                <!-- fim do step 03-->
-        </form>
-             </div> 
-
+                <!-- fim do Card 03-->
+            </form>
+            </div>
         </div>
-    </div> 
-
-
+    </div>    
+</div>
+ 
     <script>
         function nextStep(step) {
 
-            // Esconde todos os steps
+            // Esconde todos os cards
             document.querySelectorAll('.step').forEach(s => {
                 s.classList.remove('active');
             });
 
-            // Mostra o step correto
+            // Mostra o card correto
             document.querySelector('.step-' + step).classList.add('active');
 
             // Atualiza o menu lateral
@@ -174,7 +171,7 @@
                 e.classList.remove('ativa');
             });
 
-            // step 1 = primeira etapa, etc.
+            // card 1 = primeira etapa, etc.
             const etapaAtual = document.querySelector('.etapas .etapa:nth-child(' + step + ')');
             if (etapaAtual) {
                 etapaAtual.classList.add('ativa');
