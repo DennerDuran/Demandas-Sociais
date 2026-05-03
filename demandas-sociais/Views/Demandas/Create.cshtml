@@ -8,19 +8,94 @@
 
 <h1 class="mb-1">Cadastrar Demanda</h1>
 <small class="text-muted">Data: @DateTime.Now.ToString("dd/MM/yyyy")</small>
+       
+<div class="row justify-content-center">
 
-<hr />
+    <!-- ETAPAS (LADO ESQUERDO) -->
+    <div class="col-lg-2 d-none d-lg-block">
+        <div class="etapas">
+            <div class="etapa ativa">Identificação</div>
+            <div class="etapa">Detalhes e Evidências</div>
+            <div class="etapa">Localização</div>
+        </div>
+    </div>
 
-<!-- Formatação da página-->
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-9">
-            <div class="card p-4 shadow-sm">
+
+    <!-- Etapa 01 - Identificação ->
+    <!-- FORMULÁRIO (CARD PRINCIPAL) -->
+    <div class="col-lg-8">
+        <div class="card p-4 shadow-sm">
 
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="step step-1 active"> 
 
-            <!-- N da Demanda -->
+            <!-- Campo buscar morador -->
+         <div class="form-group mt-3">
+           <input type="text"
+           class="form-control"
+           placeholder="Buscar Morador (por Nome, RG ou CPF)">
+         </div>
+         
+                    <!-- campo tipo de necessidade morador -->
+                    <div class="bg-urgencia mt-4">
+                        <label class="control-label">Tipo de Necessidade</label>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="form-check"><input type="checkbox"> Saúde</div>
+                                <div class="form-check"><input type="checkbox"> Alimentação/Hidratação</div>
+                                <div class="form-check"><input type="checkbox"> Vestuário</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check"><input type="checkbox"> Apoio Jurídico</div>
+                                <div class="form-check"><input type="checkbox"> Emprego</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- Nível de Urgência -->
+                <div class="bg-urgencia mt-4">
+                    <label class="control-label">Nível de Urgência</label>
+
+                    <!-- Prioridade -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="Prioridade" value="1">
+                        <label class="form-check-label">Baixa (Pode aguardar planejamento regular)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="Prioridade" value="2">
+                        <label class="form-check-label">Média (Necessita atenção nos próximos dias)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="Prioridade" value="3">
+                        <label class="form-check-label">Alta (Risco à vida ou integridade física imediata)</label>
+                    </div>
+                </div>
+                <span asp-validation-for="Prioridade" class="text-danger"></span>
+              
+
+         
+
+            <!-- Campos de Adicionar/Voltar -->
+                    <!-- <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Voltar</a>-->
+                     
+           
+                    <button type="button"
+                            class="btn btn-primary"
+                            onclick="nextStep(2)">
+                        Avançar
+                    </button>
+                </div>
+                    <!-- fim do step 01-->
+
+      <!-- Inicio do Step 02 -->
+                <div class="step step-2">
+
+                <h5>Detalhes e Evidências</h5>
+
+                    <!-- N da Demanda -->
                     <div class="form-group mt-4">
                         <label asp-for="Demanda" class="control-label"></label>
                         <input asp-for="Demanda" class="form-control" />
@@ -28,53 +103,81 @@
                     </div>
 
 
-            <!-- Descrição da Demanda -->
+                    <!-- Descrição da Demanda -->
                     <div class="form-group mt-4">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
 
-            <!-- Tipo de Demanda -->
+                    <!-- Tipo de Demanda -->
                     <div class="form-group mt-4">
-                <label asp-for="Tipo" class="control-label"></label>
-                <input asp-for="Tipo" class="form-control" />
-                <span asp-validation-for="Tipo" class="text-danger"></span>
-            </div>
-          
-            <!-- Nível de Urgência -->
-                    <div class="bg-urgencia mt-4">
-                <label class="control-label">Nível de Urgência</label>
+                        <label asp-for="Tipo" class="control-label"></label>
+                        <input asp-for="Tipo" class="form-control" />
+                        <span asp-validation-for="Tipo" class="text-danger"></span>
+                    </div>
 
-                <!-- Prioridade -->
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Prioridade" value="1">
-                    <label class="form-check-label">Baixa</label>
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button"
+                            class="btn btn-outline-primary"
+                            onclick="nextStep(1)">
+                        Voltar
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-primary"
+                            onclick="nextStep(3)">
+                        Avançar
+                    </button>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Prioridade" value="2">
-                    <label class="form-check-label">Média</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Prioridade" value="3">
-                    <label class="form-check-label">Alta</label>
-                </div>
             </div>
-            <span asp-validation-for="Prioridade" class="text-danger"></span>
+                <!-- fim do step 02-->
 
-            <!-- Campos de Adicionar/Voltar -->
-            <div class="form-group mt-4 text-end">
-                <a asp-action="Index" class="btn btn-primary" style="background-color: white; border-color: purple; color: purple">Voltar</a>
-                <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: purple; border-color: purple;" />
-               
-            </div>
+                <!-- Inicio do Step 03 -->
+                <div class="step step-3"> 
 
+                    <h5>Localização</h5>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button"
+                                class="btn btn-outline-primary"
+                                onclick="nextStep(2)">
+                            Voltar
+                        </button>
+
+                     <input type="submit" value="Adicionar" class="btn btn-primary" style="background-color: purple; border-color: purple;" /> 
+
+                </div>
+                </div>
+                <!-- fim do step 03-->
         </form>
-  
-             </div>
-        </div>
-    </div>
-</div>
+             </div> 
 
+        </div>
+    </div> 
+
+
+    <script>
+        function nextStep(step) {
+
+            // Esconde todos os steps
+            document.querySelectorAll('.step').forEach(s => {
+                s.classList.remove('active');
+            });
+
+            // Mostra o step correto
+            document.querySelector('.step-' + step).classList.add('active');
+
+            // Atualiza o menu lateral
+            document.querySelectorAll('.etapa').forEach(e => {
+                e.classList.remove('ativa');
+            });
+
+            // step 1 = primeira etapa, etc.
+            const etapaAtual = document.querySelector('.etapas .etapa:nth-child(' + step + ')');
+            if (etapaAtual) {
+                etapaAtual.classList.add('ativa');
+            }
+        }
+    </script>

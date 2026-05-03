@@ -1,2 +1,117 @@
-﻿body {
+﻿
+
+/* ===== BASE ===== */
+body {
+    background-color: #f6f6f9;
+}
+
+h1 {
+    font-weight: 600;
+    color: #2b2b2b;
+}
+
+small.text-muted {
+    font-size: 14px;
+}
+
+/* ===== CARD PRINCIPAL ===== */
+.card {
+    border-radius: 18px;
+    border: none;
+}
+
+/* ===== FORM ===== */
+.form-group label,
+.control-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+}
+
+    .form-control:focus {
+        border-color: #6f42c1;
+        box-shadow: 0 0 0 0.15rem rgba(111, 66, 193, 0.25);
+    }
+
+/* ===== BLOCO CINZA ===== */
+.bg-urgencia {
+    background-color: #eeeeee;
+    padding: 16px 20px;
+    border-radius: 14px;
+}
+
+/* ===== RADIOS ===== */
+.form-check {
+    margin-top: 8px;
+}
+
+.form-check-input,
+.form-check-label {
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+/* ===== BOTÕES ===== */
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    border-radius: 16px;
+    padding: 8px 28px;
+    font-weight: 500;
+}
+
+    .btn-primary:hover {
+        background-color: #5a32c6;
+        border-color: #5a32c6;
+    }
+
+.btn-outline-primary {
+    border-radius: 20px;
+    padding: 8px 28px;
+}
+
+/* ===== ETAPAS LATERAIS ===== */
+.etapas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.etapa {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    background-color: #e9e9f2;
+    color: #5a32c6;
+    width: fit-content;
+    opacity: 0.5;
+}
+
+    .etapa.ativa {
+        background-color: #6f42c1;
+        color: #ffffff;
+        font-weight: 600;
+        opacity: 1;
+    }
+
+/* ===== STEPS (WIZARD) ===== */
+.step {
+    display: none;
+}
+
+    .step.active {
+        display: block;
+    }
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
 }
